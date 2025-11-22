@@ -3,38 +3,25 @@ import { ArrowRight } from "lucide-react";
 
 export const FinalCTASection = () => {
   return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Dramatic Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-card via-background to-card" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,hsl(var(--orange-glow)/0.2)_0%,transparent_60%)]" />
-      
-      <div className="container relative z-10 mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          {/* Final Headline */}
-          <h2 className="text-4xl md:text-6xl font-black leading-tight">
-            Se você não puxar assunto direito,{" "}
-            <span className="text-primary">outro puxa.</span>
-            <br />
-            Torne-se o cara que{" "}
-            <span className="text-primary">ela prefere.</span>
-          </h2>
-
-          {/* Final CTA */}
-          <div className="pt-8">
-            <Button 
-              variant="hero" 
-              size="xl"
-              className="group"
-            >
-              Desbloquear meu Xaveco por R$ 19,90
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+    <section className="py-24 relative overflow-hidden bg-gradient-to-b from-background to-card">
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+          <div className="space-y-6">
+            <p className="text-xl md:text-2xl text-muted-foreground italic">
+              "As melhores conversas da sua vida começam com uma única mensagem."
+            </p>
+            <p className="text-2xl md:text-3xl font-black">
+              O Xaveco escreve essa mensagem por você.
+            </p>
           </div>
 
-          {/* Footer Note */}
-          <p className="text-sm text-muted-foreground pt-8">
-            Plano semanal • Cancele quando quiser • Ativação instantânea
-          </p>
+          <div className="pt-8 border-t border-border">
+            <p className="text-sm text-muted-foreground mb-8">
+              © 2024 Xaveco. Todos os direitos reservados.
+              <br />
+              Pare de ser ignorado. Comece a ser notado.
+            </p>
+          </div>
         </div>
       </div>
     </section>
