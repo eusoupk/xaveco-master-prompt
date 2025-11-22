@@ -11,7 +11,7 @@ export const Popup = ({ visible, onClose }: PopupProps) => {
 
   const handleCtaClick = () => {
     onClose();
-    window.location.href = 'https://xaveco.online/';
+    window.location.href = '/';
   };
 
   const handleOverlayClick = (e: React.MouseEvent) => {
