@@ -17,15 +17,12 @@ export const SocialProofBar = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Fade out
       setIsVisible(false);
-      
-      // After fade out, change comment and fade in
       setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % COMMENTS.length);
         setIsVisible(true);
       }, 300);
-    }, 4000); // Change every 4 seconds
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
@@ -33,19 +30,19 @@ export const SocialProofBar = () => {
   const comment = COMMENTS[currentIndex];
 
   return (
-    <div className="flex justify-center mt-8">
+    <div className="flex justify-center mt-4 md:mt-8 w-full px-2">
       <div 
         className={`
-          bg-background/60 border-2 border-border/50 px-4 py-2
-          transition-all duration-300 ease-out
+          bg-background/60 border border-border/50 md:border-2 px-3 md:px-4 py-1.5 md:py-2
+          transition-all duration-300 ease-out max-w-full
           ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}
         `}
       >
-        <p className="text-xs text-muted-foreground flex items-center gap-2">
-          <span className="text-sm">{comment.icon}</span>
+        <p className="text-[10px] md:text-xs text-muted-foreground flex items-center gap-1 md:gap-2 flex-wrap justify-center">
+          <span className="text-xs md:text-sm">{comment.icon}</span>
           <span className="text-primary">{comment.user}</span>
-          <span className="text-muted-foreground/60">disse:</span>
-          <span className="italic text-foreground/80">&quot;{comment.text}&quot;</span>
+          <span className="text-muted-foreground/60 hidden sm:inline">disse:</span>
+          <span className="italic text-foreground/80 truncate max-w-[150px] sm:max-w-none">&quot;{comment.text}&quot;</span>
         </p>
       </div>
     </div>
