@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 
 const COMMENTS = [
-  { icon: '💬', text: 'deu certo 😳' },
-  { icon: '❤️', text: 'vou sair com ela hoje' },
-  { icon: '💬', text: 'parece mentira, mas funciona' },
-  { icon: '❤️', text: 'nunca pensei que ia destravar assim' },
-  { icon: '💬', text: 'usei ontem, já ajudou' },
-  { icon: '❤️', text: 'me salvou numa conversa hoje' },
+  { icon: '💬', user: '@lucas_m', text: 'deu certo 😳' },
+  { icon: '❤️', user: '@mari_santos', text: 'vou sair com ela hoje' },
+  { icon: '💬', user: '@pedro_h', text: 'parece mentira, mas funciona' },
+  { icon: '❤️', user: '@gabis_22', text: 'nunca pensei que ia destravar assim' },
+  { icon: '💬', user: '@rafa_dev', text: 'usei ontem, já ajudou' },
+  { icon: '❤️', user: '@ana_clara', text: 'me salvou numa conversa hoje' },
+  { icon: '💬', user: '@thiag0_', text: 'isso é real mesmo' },
+  { icon: '❤️', user: '@ju_ferreira', text: 'consegui o número dela' },
 ];
 
 export const SocialProofBar = () => {
@@ -41,7 +43,9 @@ export const SocialProofBar = () => {
       >
         <p className="text-xs text-muted-foreground flex items-center gap-2">
           <span className="text-sm">{comment.icon}</span>
-          <span className="italic">"{comment.text}"</span>
+          <span className="text-primary">{comment.user}</span>
+          <span className="text-muted-foreground/60">disse:</span>
+          <span className="italic text-foreground/80">&quot;{comment.text}&quot;</span>
         </p>
       </div>
     </div>
