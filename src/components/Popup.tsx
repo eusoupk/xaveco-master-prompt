@@ -1,5 +1,7 @@
 import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useEffect } from 'react';
+import { soundGenerator } from '@/hooks/useSound';
 
 interface PopupProps {
   visible: boolean;
@@ -7,6 +9,12 @@ interface PopupProps {
 }
 
 export const Popup = ({ visible, onClose }: PopupProps) => {
+  useEffect(() => {
+    if (visible) {
+      soundGenerator.playPopup();
+    }
+  }, [visible]);
+
   if (!visible) return null;
 
   const handleCtaClick = () => {
@@ -15,7 +23,15 @@ export const Popup = ({ visible, onClose }: PopupProps) => {
   };
 
   const handleOverlayClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) onClose();
+    if (e.target === e.currentTarget) {
+      soundGenerator.playClose();
+      onClose();
+    }
+  };
+
+  const handleClose = () => {
+    soundGenerator.playClose();
+    onClose();
   };
 
   return (
@@ -25,7 +41,7 @@ export const Popup = ({ visible, onClose }: PopupProps) => {
     >
       <div className="relative bg-card border-4 border-primary p-8 max-w-md w-full shadow-[0_0_40px_hsl(var(--primary)/0.3)] animate-scale-in">
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="absolute top-4 right-4 text-foreground hover:text-primary transition-colors"
           aria-label="Fechar popup"
         >
