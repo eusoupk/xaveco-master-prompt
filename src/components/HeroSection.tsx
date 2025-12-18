@@ -1,6 +1,7 @@
 import { forwardRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { useTimer } from "@/hooks/useTimer";
+import { useOnlineCounter } from "@/hooks/useOnlineCounter";
 import xavecoLogo from "@/assets/xaveco-logo-pixel.png";
 
 interface HeroSectionProps {
@@ -9,6 +10,7 @@ interface HeroSectionProps {
 
 export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView }, ref) => {
   const { timeText, ended } = useTimer();
+  const { formattedCount } = useOnlineCounter();
 
   useEffect(() => {
     // Hero is always in view on load
@@ -17,11 +19,12 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Timer Badge */}
+      {/* Timer Badge / Online Counter */}
       <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10">
         {ended ? (
-          <div className="bg-destructive/30 border-4 border-destructive text-destructive px-6 py-3 pixel-text-shadow">
-            Oferta finalizando…
+          <div className="bg-pixel-green/20 border-4 border-pixel-green text-pixel-green px-6 py-3 pixel-text-shadow animate-pulse">
+            <span className="text-lg mr-2">🎮</span>
+            Xavekers online: <span className="text-pixel-gold tabular-nums">{formattedCount}</span>
           </div>
         ) : (
           <div className="bg-primary/20 border-4 border-primary text-primary px-6 py-3 flex items-center gap-2 pixel-text-shadow">
