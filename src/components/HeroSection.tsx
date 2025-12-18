@@ -2,6 +2,7 @@ import { forwardRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { useTimer } from "@/hooks/useTimer";
 import { useOnlineCounter } from "@/hooks/useOnlineCounter";
+import { SocialProofBar } from "@/components/SocialProofBar";
 import xavecoLogo from "@/assets/xaveco-logo-pixel.png";
 
 interface HeroSectionProps {
@@ -71,6 +72,9 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView
               <span className="text-pixel-gold">★</span> Premium
             </span>
           </div>
+
+          {/* Social Proof Bar */}
+          <SocialProofBar />
         </div>
       </div>
     </section>
