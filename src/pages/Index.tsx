@@ -6,6 +6,7 @@ import { ScarcitySection } from "@/components/ScarcitySection";
 import { FinalCTASection } from "@/components/FinalCTASection";
 import { Popup } from "@/components/Popup";
 import { StickyButton } from "@/components/StickyButton";
+import { StarryBackground } from "@/components/StarryBackground";
 import { usePopup } from "@/hooks/usePopup";
 import { useStickyButton } from "@/hooks/useStickyButton";
 
@@ -15,10 +16,11 @@ const Index = () => {
 
   return (
     <>
+      <StarryBackground />
       <Popup visible={visible} onClose={close} />
       <StickyButton visible={stickyVisible} />
 
-      <main className="min-h-screen bg-background text-foreground">
+      <main className="min-h-screen relative">
         <HeroSection />
         <PainSection />
         <TransformSection />

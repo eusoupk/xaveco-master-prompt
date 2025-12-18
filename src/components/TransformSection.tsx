@@ -1,85 +1,102 @@
 import { Button } from "@/components/ui/button";
 
-const features = [
+const phases = [
   {
-    icon: "💬",
-    title: "Mensagens que Fazem Ela RESPONDER",
-    description:
-      'Esqueça "oi, tudo bem?". Tenha aberturas que geram curiosidade instantânea.',
+    phase: "FASE 1",
+    icon: "📝",
+    title: "Descreva a Situação",
+    description: "Conte sobre ela e o contexto da conversa",
   },
   {
-    icon: "❤️",
-    title: "Crie Conexão Emocional REAL",
-    description:
-      "Conversas que fazem ela sentir algo especial. Não é manipulação, é inteligência emocional.",
-  },
-  {
+    phase: "FASE 2",
     icon: "⚡",
-    title: "Escape da Friendzone",
-    description:
-      "Mensagens estratégicas que despertam atração sem parecer forçado ou desesperado.",
+    title: "Xaveco Gera as Respostas",
+    description: "IA cria mensagens perfeitas pra você",
   },
   {
-    icon: "✨",
-    title: "Pareça Confiante (Mesmo Tremendo)",
-    description:
-      "Tenha as palavras certas mesmo quando a ansiedade bater. Confiança é questão de preparação.",
+    phase: "FASE 3",
+    icon: "🎯",
+    title: "Escolha Seu Estilo",
+    description: "Selecione o tom que combina com você",
   },
   {
-    icon: "📈",
-    title: 'Se Destaque dos "Outros Caras"',
-    description:
-      "Enquanto eles mandam clichês, você manda mensagens que ela vai querer mostrar pras amigas.",
+    phase: "BOSS FINAL",
+    icon: "❤️",
+    title: "Use na Vida Real",
+    description: "Manda a mensagem e conquista de verdade",
   },
-  {
-    icon: "🔐",
-    title: "Scripts Completos para Encontro",
-    description:
-      "Da primeira mensagem até marcar o encontro. Cada etapa planejada para o sucesso.",
-  },
+];
+
+const powerUps = [
+  { icon: "❤️", stat: "+99", label: "Confiança" },
+  { icon: "🔥", stat: "+85", label: "Atitude" },
+  { icon: "⚡", stat: "+70", label: "Velocidade" },
+  { icon: "💬", stat: "+95", label: "Criatividade" },
+  { icon: "🧠", stat: "+80", label: "Clareza" },
+  { icon: "🎯", stat: "+90", label: "Precisão" },
 ];
 
 export const TransformSection = () => {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 relative z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-4">
-          <Button
-            variant="outline"
-            className="bg-green-600/10 border-green-600/30 text-green-400 hover:bg-green-600/20 mb-8"
-          >
-            ✨ A Solução Que Muda Tudo
-          </Button>
+          <span className="inline-block bg-pixel-green/20 border-4 border-pixel-green text-pixel-green px-6 py-2 text-xs mb-8">
+            ★ NOVO JOGO DESBLOQUEADO ★
+          </span>
         </div>
 
-        <h2 className="text-4xl md:text-5xl font-black text-center mb-4">
-          Apresentando o{" "}
-          <span className="bg-gradient-to-r from-primary via-[#FF4081] to-[#FF1744] bg-clip-text text-transparent">
-            Xaveco
-          </span>
+        <h2 className="text-center mb-4">
+          Como Funciona o{" "}
+          <span className="text-primary">XAVECO</span>
         </h2>
 
-        <p className="text-center text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-16">
-          O aplicativo secreto que cria mensagens tão perfeitas, tão naturais e
-          tão interessantes que a pessoa{" "}
-          <strong className="text-foreground">simplesmente NÃO CONSEGUE ignorar</strong>.
+        <p className="text-center text-xs text-muted-foreground max-w-2xl mx-auto mb-16">
+          O aplicativo secreto que cria mensagens tão perfeitas que ela{" "}
+          <span className="text-foreground">NÃO CONSEGUE ignorar</span>.
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
+        {/* Game Phases */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-16">
+          {phases.map((phase, index) => (
             <div
               key={index}
-              className="bg-card border border-border p-8 rounded-2xl hover:border-primary/50 transition-all duration-300 group"
+              className="bg-card border-4 border-border p-6 hover:border-primary transition-colors group"
             >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-[#FF1744] flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform">
-                {feature.icon}
+              <div className="text-pixel-gold text-xs mb-4 pixel-text-shadow">
+                🕹️ {phase.phase}
               </div>
-              <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {feature.description}
+              <div className="text-4xl mb-4 group-hover:animate-pixel-bounce">
+                {phase.icon}
+              </div>
+              <h3 className="text-sm mb-3 text-primary">{phase.title}</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {phase.description}
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Power-ups Section */}
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-center text-sm mb-8 text-pixel-gold">
+            ⬆ POWER-UPS DESBLOQUEADOS ⬆
+          </h3>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {powerUps.map((powerUp, index) => (
+              <div
+                key={index}
+                className="bg-secondary/50 border-4 border-secondary p-4 flex items-center gap-4 hover:border-pixel-green transition-colors"
+              >
+                <span className="text-2xl">{powerUp.icon}</span>
+                <div>
+                  <div className="text-pixel-green text-sm">{powerUp.stat}</div>
+                  <div className="text-xs text-muted-foreground">{powerUp.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
