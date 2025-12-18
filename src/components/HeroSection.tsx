@@ -25,7 +25,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView
         {ended ? (
           <div className="bg-pixel-green/20 border-4 border-pixel-green text-pixel-green px-6 py-3 pixel-text-shadow animate-pulse">
             <span className="text-lg mr-2">🎮</span>
-            Xavekers online: <span className="text-pixel-gold tabular-nums">{formattedCount}</span>
+            Jogadores ativos: <span className="text-pixel-gold tabular-nums">{formattedCount}</span>
           </div>
         ) : (
           <div className="bg-primary/20 border-4 border-primary text-primary px-6 py-3 flex items-center gap-2 pixel-text-shadow">
