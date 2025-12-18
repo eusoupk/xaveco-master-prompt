@@ -50,16 +50,13 @@ const Index = () => {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting && !triggeredSections.has(section.id)) {
-            // Mark as triggered
             setTriggeredSections(prev => new Set([...prev, section.id]));
             
-            // Don't show level up for first section (hero)
             if (section.level > 1) {
               setLevelUpInfo({ level: section.level, name: section.name });
               setShowLevelUp(true);
               setCurrentLevel(section.level);
               
-              // Reset after animation
               setTimeout(() => setShowLevelUp(false), 2500);
             } else {
               setCurrentLevel(1);
@@ -84,9 +81,9 @@ const Index = () => {
       <StickyButton visible={stickyVisible} />
       
       {/* Level indicator */}
-      <div className="fixed top-4 left-4 z-50 bg-card/80 border-4 border-border px-4 py-2">
-        <div className="text-xs text-pixel-gold">LVL</div>
-        <div className="text-lg text-primary">{currentLevel}</div>
+      <div className="fixed top-4 left-2 md:left-4 z-50 bg-card/80 border-2 md:border-4 border-border px-2 md:px-4 py-1 md:py-2">
+        <div className="text-[8px] md:text-xs text-pixel-gold">LVL</div>
+        <div className="text-sm md:text-lg text-primary">{currentLevel}</div>
       </div>
 
       <LevelUpEffect 
