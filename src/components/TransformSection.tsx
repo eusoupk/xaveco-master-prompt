@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { soundGenerator } from "@/hooks/useSound";
 
 const phases = [
   {
@@ -37,6 +38,10 @@ const powerUps = [
 ];
 
 export const TransformSection = () => {
+  const handlePowerUpHover = () => {
+    soundGenerator.playPowerUp();
+  };
+
   return (
     <section className="py-24 relative z-10">
       <div className="container mx-auto px-4">
@@ -61,7 +66,8 @@ export const TransformSection = () => {
           {phases.map((phase, index) => (
             <div
               key={index}
-              className="bg-card border-4 border-border p-6 hover:border-primary transition-colors group"
+              className="bg-card border-4 border-border p-6 hover:border-primary transition-colors group cursor-pointer"
+              onMouseEnter={() => soundGenerator.playHover()}
             >
               <div className="text-pixel-gold text-xs mb-4 pixel-text-shadow">
                 🕹️ {phase.phase}
@@ -87,7 +93,8 @@ export const TransformSection = () => {
             {powerUps.map((powerUp, index) => (
               <div
                 key={index}
-                className="bg-secondary/50 border-4 border-secondary p-4 flex items-center gap-4 hover:border-pixel-green transition-colors"
+                className="bg-secondary/50 border-4 border-secondary p-4 flex items-center gap-4 hover:border-pixel-green transition-colors cursor-pointer"
+                onMouseEnter={handlePowerUpHover}
               >
                 <span className="text-2xl">{powerUp.icon}</span>
                 <div>
