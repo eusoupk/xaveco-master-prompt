@@ -23,8 +23,12 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView
       {/* Timer Badge / Online Counter */}
       <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10">
         {ended ? (
-          <div className="bg-pixel-green/20 border-4 border-pixel-green text-pixel-green px-6 py-3 pixel-text-shadow animate-pulse">
-            <span className="text-lg mr-2">🎮</span>
+          <div className="bg-pixel-green/20 border-4 border-pixel-green text-pixel-green px-6 py-3 pixel-text-shadow animate-pulse flex items-center gap-2">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pixel-green opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-pixel-green"></span>
+            </span>
+            <span className="text-lg">🎮</span>
             Jogadores ativos: <span className="text-pixel-gold tabular-nums">{formattedCount}</span>
           </div>
         ) : (
