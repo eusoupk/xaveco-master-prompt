@@ -1,3 +1,9 @@
+import { forwardRef } from 'react';
+
+interface SocialProofSectionProps {
+  onInView?: () => void;
+}
+
 const testimonials = [
   {
     rating: 5,
@@ -25,9 +31,9 @@ const testimonials = [
   },
 ];
 
-export const SocialProofSection = () => {
+export const SocialProofSection = forwardRef<HTMLElement, SocialProofSectionProps>((_, ref) => {
   return (
-    <section className="py-24 relative z-10">
+    <section ref={ref} className="py-24 relative z-10">
       <div className="container mx-auto px-4">
         <h2 className="text-center mb-4">
           ⭐ HALL DA FAMA ⭐
@@ -71,4 +77,6 @@ export const SocialProofSection = () => {
       </div>
     </section>
   );
-};
+});
+
+SocialProofSection.displayName = 'SocialProofSection';

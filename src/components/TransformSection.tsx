@@ -1,5 +1,10 @@
+import { forwardRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { soundGenerator } from "@/hooks/useSound";
+
+interface TransformSectionProps {
+  onInView?: () => void;
+}
 
 const phases = [
   {
@@ -37,13 +42,13 @@ const powerUps = [
   { icon: "🎯", stat: "+90", label: "Precisão" },
 ];
 
-export const TransformSection = () => {
+export const TransformSection = forwardRef<HTMLElement, TransformSectionProps>((_, ref) => {
   const handlePowerUpHover = () => {
     soundGenerator.playPowerUp();
   };
 
   return (
-    <section className="py-24 relative z-10">
+    <section ref={ref} className="py-24 relative z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-4">
           <span className="inline-block bg-pixel-green/20 border-4 border-pixel-green text-pixel-green px-6 py-2 text-xs mb-8">
@@ -108,4 +113,6 @@ export const TransformSection = () => {
       </div>
     </section>
   );
-};
+});
+
+TransformSection.displayName = 'TransformSection';

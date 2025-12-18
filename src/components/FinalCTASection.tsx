@@ -1,6 +1,12 @@
-export const FinalCTASection = () => {
+import { forwardRef } from 'react';
+
+interface FinalCTASectionProps {
+  onInView?: () => void;
+}
+
+export const FinalCTASection = forwardRef<HTMLElement, FinalCTASectionProps>((_, ref) => {
   return (
-    <section className="py-24 relative z-10">
+    <section ref={ref} className="py-24 relative z-10">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center space-y-12">
           <div className="bg-card border-4 border-border p-8">
@@ -31,4 +37,6 @@ export const FinalCTASection = () => {
       </div>
     </section>
   );
-};
+});
+
+FinalCTASection.displayName = 'FinalCTASection';

@@ -1,11 +1,16 @@
+import { forwardRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { useTimer } from "@/hooks/useTimer";
 
-export const ScarcitySection = () => {
+interface ScarcitySectionProps {
+  onInView?: () => void;
+}
+
+export const ScarcitySection = forwardRef<HTMLElement, ScarcitySectionProps>((_, ref) => {
   const { timeText } = useTimer();
 
   return (
-    <section className="py-24 relative z-10">
+    <section ref={ref} className="py-24 relative z-10">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="bg-card border-4 border-destructive p-8 md:p-12">
@@ -74,4 +79,6 @@ export const ScarcitySection = () => {
       </div>
     </section>
   );
-};
+});
+
+ScarcitySection.displayName = 'ScarcitySection';
