@@ -1,12 +1,22 @@
+import { forwardRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { useTimer } from "@/hooks/useTimer";
 import xavecoLogo from "@/assets/xaveco-logo-pixel.png";
 
-export const HeroSection = () => {
+interface HeroSectionProps {
+  onInView?: () => void;
+}
+
+export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView }, ref) => {
   const { timeText, ended } = useTimer();
 
+  useEffect(() => {
+    // Hero is always in view on load
+    onInView?.();
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Timer Badge */}
       <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10">
         {ended ? (
@@ -62,4 +72,6 @@ export const HeroSection = () => {
       </div>
     </section>
   );
-};
+});
+
+HeroSection.displayName = 'HeroSection';

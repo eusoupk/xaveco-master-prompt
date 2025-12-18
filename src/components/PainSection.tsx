@@ -1,4 +1,9 @@
+import { forwardRef } from 'react';
 import { Button } from "@/components/ui/button";
+
+interface PainSectionProps {
+  onInView?: () => void;
+}
 
 const painPoints = [
   'Mandar "oi, tudo bem?" e ser IGNORADO pela 47ª vez',
@@ -11,9 +16,9 @@ const painPoints = [
   'Ser "o cara legal" mas nunca o cara que ela QUER',
 ];
 
-export const PainSection = () => {
+export const PainSection = forwardRef<HTMLElement, PainSectionProps>((_, ref) => {
   return (
-    <section className="py-24 relative z-10">
+    <section ref={ref} className="py-24 relative z-10">
       <div className="container mx-auto px-4">
         <h2 className="text-center mb-4 text-destructive">
           ✖ GAME OVER ✖
@@ -61,4 +66,6 @@ export const PainSection = () => {
       </div>
     </section>
   );
-};
+});
+
+PainSection.displayName = 'PainSection';
