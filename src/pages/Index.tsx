@@ -81,9 +81,9 @@ const Index = () => {
       <StickyButton visible={stickyVisible} />
       
       {/* Level indicator */}
-      <div className="fixed top-4 left-2 md:left-4 z-50 bg-card/80 border-2 md:border-4 border-border px-2 md:px-4 py-1 md:py-2">
-        <div className="text-[8px] md:text-xs text-pixel-gold">LVL</div>
-        <div className="text-sm md:text-lg text-primary">{currentLevel}</div>
+      <div className="fixed top-3 md:top-4 left-2 md:left-4 z-50 bg-card/80 border border-border md:border-4 px-1.5 md:px-4 py-0.5 md:py-2">
+        <div className="text-[6px] md:text-xs text-pixel-gold">LVL</div>
+        <div className="text-xs md:text-lg text-primary">{currentLevel}</div>
       </div>
 
       <LevelUpEffect 

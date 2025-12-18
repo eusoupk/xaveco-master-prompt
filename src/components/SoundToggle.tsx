@@ -16,10 +16,10 @@ export const SoundToggle = () => {
   return (
     <button
       onClick={toggle}
-      className="fixed top-4 right-4 z-50 bg-card border-4 border-border p-3 hover:border-primary transition-colors group"
+      className="fixed top-3 md:top-4 right-2 md:right-4 z-50 bg-card border border-border md:border-4 p-1.5 md:p-3 hover:border-primary transition-colors group"
       aria-label={enabled ? 'Desativar som' : 'Ativar som'}
     >
-      <span className="text-xl group-hover:animate-pixel-bounce inline-block">
+      <span className="text-base md:text-xl group-hover:animate-pixel-bounce inline-block">
         {enabled ? '🔊' : '🔇'}
       </span>
     </button>

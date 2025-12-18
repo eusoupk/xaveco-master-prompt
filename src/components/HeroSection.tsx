@@ -20,18 +20,18 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
       {/* Timer Badge / Online Counter */}
-      <div className="absolute top-4 md:top-8 left-1/2 -translate-x-1/2 z-10 w-[90%] md:w-auto">
+      <div className="absolute top-3 md:top-8 left-1/2 -translate-x-1/2 z-10 w-auto max-w-[65%] md:max-w-none">
         {ended ? (
-          <div className="bg-pixel-green/20 border-2 md:border-4 border-pixel-green text-pixel-green px-3 md:px-6 py-2 md:py-3 pixel-text-shadow animate-pulse flex items-center justify-center gap-2 text-[10px] md:text-xs">
-            <span className="relative flex h-2 w-2 md:h-3 md:w-3">
+          <div className="bg-pixel-green/20 border border-pixel-green md:border-4 text-pixel-green px-2 md:px-6 py-1.5 md:py-3 pixel-text-shadow animate-pulse flex items-center justify-center gap-1.5 md:gap-2 text-[8px] md:text-xs">
+            <span className="relative flex h-1.5 w-1.5 md:h-3 md:w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pixel-green opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 md:h-3 md:w-3 bg-pixel-green"></span>
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 md:h-3 md:w-3 bg-pixel-green"></span>
             </span>
-            <span className="text-base md:text-lg">🎮</span>
+            <span className="text-sm md:text-lg">🎮</span>
             <span className="whitespace-nowrap">Jogadores ativos: <span className="text-pixel-gold tabular-nums">{formattedCount}</span></span>
           </div>
         ) : (
-          <div className="bg-primary/20 border-2 md:border-4 border-primary text-primary px-3 md:px-6 py-2 md:py-3 flex items-center justify-center gap-1 md:gap-2 pixel-text-shadow text-[10px] md:text-xs">
+          <div className="bg-primary/20 border border-primary md:border-4 text-primary px-2 md:px-6 py-1.5 md:py-3 flex items-center justify-center gap-1 md:gap-2 pixel-text-shadow text-[8px] md:text-xs">
             <span className="text-pixel-gold">⚡</span>
             <span className="whitespace-nowrap">Acesso Limitado • Expira em <span className="tabular-nums text-pixel-gold">{timeText}</span></span>
           </div>
