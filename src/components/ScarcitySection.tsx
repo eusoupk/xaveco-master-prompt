@@ -63,7 +63,7 @@ export const ScarcitySection = forwardRef<HTMLElement, ScarcitySectionProps>((_,
                 variant="hero"
                 size="default"
                 className="group text-[10px] md:text-sm h-10 md:h-16 px-6 md:px-12"
-                onClick={() => window.location.href = 'https://xaveco.online/'}
+                onClick={() => window.location.href = 'https://desenrola-comigo.lovable.app/'}
               >
                 ▶ GOOD ENDING
               </Button>

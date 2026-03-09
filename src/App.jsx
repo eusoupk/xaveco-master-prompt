@@ -4,7 +4,7 @@ const POPUP_KEY = 'xaveco_popup_closed_at'
 const TIMER_KEY = 'xaveco_timer_end'
 const POPUP_DELAY = 1500
 const TIMER_DURATION_SEC = 15 * 60
-const CTA_URL = 'https://xaveco.online/'
+const CTA_URL = 'https://desenrola-comigo.lovable.app/'
 
 function useTimer() {
   const [timeText, setTimeText] = useState('15:00')

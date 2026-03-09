@@ -7,7 +7,7 @@ interface StickyButtonProps {
 export const StickyButton = ({ visible }: StickyButtonProps) => {
   const handleClick = () => {
     soundGenerator.playStart();
-    window.location.href = 'https://xaveco.online/';
+    window.location.href = 'https://desenrola-comigo.lovable.app/';
   };
 
   const handleHover = () => {

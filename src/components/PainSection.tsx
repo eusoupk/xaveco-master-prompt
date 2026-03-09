@@ -59,7 +59,7 @@ export const PainSection = forwardRef<HTMLElement, PainSectionProps>((_, ref) =>
             variant="game"
             size="default"
             className="text-[10px] md:text-xs h-10 md:h-12 px-4 md:px-8"
-            onClick={() => window.location.href = 'https://xaveco.online/'}
+            onClick={() => window.location.href = 'https://desenrola-comigo.lovable.app/'}
           >
             ★ A Solução Que Muda Tudo
           </Button>
