@@ -59,7 +59,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView
             variant="hero"
             size="lg"
             className="group animate-pixel-bounce text-xs md:text-sm px-8 md:px-12 h-12 md:h-16"
-            onClick={() => window.location.href = 'https://xaveco.online/'}
+            onClick={() => window.location.href = 'https://desenrola-comigo.lovable.app/'}
           >
             ▶ COMEÇAR
           </Button>
