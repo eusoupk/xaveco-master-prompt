@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, useRef, ReactNode } from 'react';
 import { X } from 'lucide-react';
 import { soundGenerator } from '@/hooks/useSound';
 
@@ -69,8 +69,18 @@ const PLANS: Plan[] = [
 
 export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
   const [visible, setVisible] = useState(false);
+  const mountedAt = useRef<number>(Date.now());
+  const MIN_DELAY_MS = 10_000;
 
   const open = useCallback(() => {
+    const elapsed = Date.now() - mountedAt.current;
+    if (elapsed < MIN_DELAY_MS) {
+      // Antes de 10s, apenas rola suavemente até a hero em vez de abrir o modal
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
     soundGenerator.playPopup?.();
     setVisible(true);
   }, []);
