@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useTimer } from "@/hooks/useTimer";
 import { useOnlineCounter } from "@/hooks/useOnlineCounter";
 import { SocialProofBar } from "@/components/SocialProofBar";
+import { usePlansModal } from "@/components/PlansModal";
 import xavecoLogo from "@/assets/xaveco-logo-pixel.png";
 
 interface HeroSectionProps {
@@ -12,6 +13,7 @@ interface HeroSectionProps {
 export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView }, ref) => {
   const { timeText, ended } = useTimer();
   const { formattedCount } = useOnlineCounter();
+  const { open: openPlans } = usePlansModal();
 
   useEffect(() => {
     onInView?.();
@@ -59,7 +61,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView
             variant="hero"
             size="lg"
             className="group animate-pixel-bounce text-xs md:text-sm px-8 md:px-12 h-12 md:h-16"
-            onClick={() => window.location.href = 'https://desenrola-comigo.lovable.app/'}
+            onClick={openPlans}
           >
             ▶ COMEÇAR
           </Button>

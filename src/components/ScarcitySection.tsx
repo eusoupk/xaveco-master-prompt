@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { useTimer } from "@/hooks/useTimer";
+import { usePlansModal } from "@/components/PlansModal";
 
 interface ScarcitySectionProps {
   onInView?: () => void;
@@ -8,6 +9,7 @@ interface ScarcitySectionProps {
 
 export const ScarcitySection = forwardRef<HTMLElement, ScarcitySectionProps>((_, ref) => {
   const { timeText } = useTimer();
+  const { open: openPlans } = usePlansModal();
 
   return (
     <section ref={ref} className="py-12 md:py-24 relative z-10 px-4">
@@ -63,7 +65,7 @@ export const ScarcitySection = forwardRef<HTMLElement, ScarcitySectionProps>((_,
                 variant="hero"
                 size="default"
                 className="group text-[10px] md:text-sm h-10 md:h-16 px-6 md:px-12"
-                onClick={() => window.location.href = 'https://desenrola-comigo.lovable.app/'}
+                onClick={openPlans}
               >
                 ▶ GOOD ENDING
               </Button>

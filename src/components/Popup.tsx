@@ -2,6 +2,7 @@ import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect } from 'react';
 import { soundGenerator } from '@/hooks/useSound';
+import { usePlansModal } from '@/components/PlansModal';
 
 interface PopupProps {
   visible: boolean;
@@ -9,6 +10,7 @@ interface PopupProps {
 }
 
 export const Popup = ({ visible, onClose }: PopupProps) => {
+  const { open: openPlans } = usePlansModal();
   useEffect(() => {
     if (visible) {
       soundGenerator.playPopup();
@@ -19,7 +21,7 @@ export const Popup = ({ visible, onClose }: PopupProps) => {
 
   const handleCtaClick = () => {
     onClose();
-    window.location.href = '/';
+    openPlans();
   };
 
   const handleOverlayClick = (e: React.MouseEvent) => {
