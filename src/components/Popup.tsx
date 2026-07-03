@@ -21,7 +21,6 @@ export const Popup = ({ visible, onClose }: PopupProps) => {
 
   const handleCtaClick = () => {
     onClose();
-    openPlans();
   };
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -55,16 +54,15 @@ export const Popup = ({ visible, onClose }: PopupProps) => {
         </div>
 
         <h3 className="text-lg text-primary text-center mb-4 pixel-text-shadow">
-          ⚠ ATENÇÃO! ⚠
+          🚨 ALGUÉM PODE ESTAR CONVERSANDO COM ELA AGORA...
         </h3>
 
-        <div className="bg-secondary/50 border-2 border-secondary p-4 mb-6">
+        <div className="bg-secondary/50 border-2 border-secondary p-4 mb-6 space-y-3">
           <p className="text-xs text-foreground text-center leading-relaxed">
-            Enquanto você lê isso,{' '}
-            <span className="text-primary">
-              alguém está mandando mensagem pra pessoa que você quer
-            </span>
-            . E provavelmente sabe exatamente o que falar.
+            Não perca tempo pensando na mensagem perfeita.
+          </p>
+          <p className="text-xs text-foreground text-center leading-relaxed">
+            Descubra como a <span className="text-primary">Inteligência Artificial do Xaveco</span> cria mensagens personalizadas pra aumentar suas chances de conseguir uma resposta.
           </p>
         </div>
 
@@ -74,7 +72,7 @@ export const Popup = ({ visible, onClose }: PopupProps) => {
           size="lg"
           className="w-full"
         >
-          ▶ NÃO PERDER TEMPO
+          ▶ DESCOBRIR AGORA
         </Button>
       </div>
     </div>
