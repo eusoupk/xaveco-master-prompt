@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { Button } from "@/components/ui/button";
+import { usePlansModal } from "@/components/PlansModal";
 
 interface PainSectionProps {
   onInView?: () => void;
@@ -17,6 +18,7 @@ const painPoints = [
 ];
 
 export const PainSection = forwardRef<HTMLElement, PainSectionProps>((_, ref) => {
+  const { open: openPlans } = usePlansModal();
   return (
     <section ref={ref} className="py-12 md:py-24 relative z-10 px-4">
       <div className="container mx-auto">
@@ -59,7 +61,7 @@ export const PainSection = forwardRef<HTMLElement, PainSectionProps>((_, ref) =>
             variant="game"
             size="default"
             className="text-[10px] md:text-xs h-10 md:h-12 px-4 md:px-8"
-            onClick={() => window.location.href = 'https://desenrola-comigo.lovable.app/'}
+            onClick={openPlans}
           >
             ★ A Solução Que Muda Tudo
           </Button>

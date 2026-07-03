@@ -1,13 +1,15 @@
 import { soundGenerator } from '@/hooks/useSound';
+import { usePlansModal } from '@/components/PlansModal';
 
 interface StickyButtonProps {
   visible: boolean;
 }
 
 export const StickyButton = ({ visible }: StickyButtonProps) => {
+  const { open: openPlans } = usePlansModal();
   const handleClick = () => {
     soundGenerator.playStart();
-    window.location.href = 'https://desenrola-comigo.lovable.app/';
+    openPlans();
   };
 
   const handleHover = () => {
