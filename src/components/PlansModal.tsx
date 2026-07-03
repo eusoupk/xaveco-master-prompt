@@ -69,25 +69,33 @@ const PLANS: Plan[] = [
 
 export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
   const [visible, setVisible] = useState(false);
-  const mountedAt = useRef<number>(Date.now());
-  const MIN_DELAY_MS = 10_000;
+  const dismissedRef = useRef(false);
+  const AUTO_OPEN_MS = 10_000;
+  const SESSION_KEY = 'xaveco_plans_modal_shown';
 
   const open = useCallback(() => {
-    const elapsed = Date.now() - mountedAt.current;
-    if (elapsed < MIN_DELAY_MS) {
-      // Antes de 10s, apenas rola suavemente até a hero em vez de abrir o modal
-      if (typeof window !== 'undefined') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-      return;
-    }
     soundGenerator.playPopup?.();
     setVisible(true);
   }, []);
 
   const close = useCallback(() => {
+    dismissedRef.current = true;
+    try { sessionStorage.setItem(SESSION_KEY, '1'); } catch {}
     soundGenerator.playClose?.();
     setVisible(false);
+  }, []);
+
+  useEffect(() => {
+    let alreadyShown = false;
+    try { alreadyShown = sessionStorage.getItem(SESSION_KEY) === '1'; } catch {}
+    if (alreadyShown) return;
+    const t = setTimeout(() => {
+      if (dismissedRef.current) return;
+      try { sessionStorage.setItem(SESSION_KEY, '1'); } catch {}
+      soundGenerator.playPopup?.();
+      setVisible(true);
+    }, AUTO_OPEN_MS);
+    return () => clearTimeout(t);
   }, []);
 
   const handleOverlayClick = (e: React.MouseEvent) => {
