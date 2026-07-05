@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const POPUP_KEY = 'xaveco_popup_closed_at';
-const POPUP_DELAY = 1500;
+const POPUP_DELAY = 20000;
 
 export function usePopup() {
   const [visible, setVisible] = useState(false);
