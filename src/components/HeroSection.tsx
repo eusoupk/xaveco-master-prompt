@@ -1,7 +1,5 @@
 import { forwardRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { useTimer } from "@/hooks/useTimer";
-import { useOnlineCounter } from "@/hooks/useOnlineCounter";
 import { SocialProofBar } from "@/components/SocialProofBar";
 import { usePlansModal } from "@/components/PlansModal";
 import xavecoLogo from "@/assets/xaveco-logo-pixel.png";
@@ -11,8 +9,6 @@ interface HeroSectionProps {
 }
 
 export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView }, ref) => {
-  const { timeText, ended } = useTimer();
-  const { formattedCount } = useOnlineCounter();
   const { open: openPlans } = usePlansModal();
 
   useEffect(() => {
