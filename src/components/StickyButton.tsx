@@ -1,30 +1,21 @@
 import { soundGenerator } from '@/hooks/useSound';
 import { usePlansModal } from '@/components/PlansModal';
 
-interface StickyButtonProps {
-  visible: boolean;
-}
+interface StickyButtonProps { visible: boolean; }
 
 export const StickyButton = ({ visible }: StickyButtonProps) => {
   const { open: openPlans } = usePlansModal();
-  const handleClick = () => {
-    soundGenerator.playStart();
-    openPlans();
-  };
-
-  const handleHover = () => {
-    soundGenerator.playHover();
-  };
-
+  const handleClick = () => { soundGenerator.playStart(); openPlans(); };
+  const handleHover = () => soundGenerator.playHover();
   return (
     <button
       onClick={handleClick}
       onMouseEnter={handleHover}
-      className={`fixed left-1/2 -translate-x-1/2 bg-pixel-green text-background px-4 md:px-8 py-3 md:py-4 font-pixel text-[10px] md:text-xs border-2 md:border-4 border-b-4 md:border-b-8 border-pixel-green-dark shadow-[0_0_30px_hsl(var(--pixel-green)/0.5)] z-40 transition-all duration-300 hover:border-b-2 md:hover:border-b-4 hover:translate-y-1 uppercase ${
-        visible ? 'bottom-4 md:bottom-6' : '-bottom-24'
+      className={`fixed left-1/2 -translate-x-1/2 z-40 px-7 py-4 rounded-2xl font-black text-sm uppercase tracking-tight bg-gradient-to-b from-[hsl(var(--pixel-green))] to-[hsl(151_100%_38%)] text-[hsl(var(--background))] border-b-[6px] border-[hsl(var(--pixel-green-dark))] shadow-[0_18px_40px_-10px_hsl(var(--pixel-green)/0.55),inset_0_2px_0_rgba(255,255,255,0.5)] transition-all duration-300 ease-out hover:-translate-y-[1px] active:translate-y-1 active:border-b-2 ${
+        visible ? 'bottom-5' : '-bottom-28'
       }`}
     >
-      ▶ ATIVAR – R$ 19,90/SEM
+      ▶ ATIVAR — R$ 19,90/SEM
     </button>
   );
 };
