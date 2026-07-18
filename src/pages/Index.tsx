@@ -80,10 +80,12 @@ const Index = () => {
       <Popup visible={visible} onClose={close} />
       <StickyButton visible={stickyVisible} />
       
-      {/* Level indicator */}
-      <div className="fixed top-3 md:top-4 left-2 md:left-4 z-50 bg-card/80 border border-border md:border-4 px-1.5 md:px-4 py-0.5 md:py-2">
-        <div className="text-[6px] md:text-xs text-pixel-gold">LVL</div>
-        <div className="text-xs md:text-lg text-primary">{currentLevel}</div>
+      {/* Level indicator — 3D pill */}
+      <div className="fixed top-4 left-4 z-50 rounded-2xl toy-glass px-3 py-1.5 flex items-center gap-2 shadow-lg">
+        <span className="text-[10px] text-pixel-gold font-black uppercase tracking-widest">LVL</span>
+        <span className="text-lg text-primary font-black italic drop-shadow-[0_0_10px_hsl(var(--primary)/0.6)] tabular-nums">
+          {currentLevel}
+        </span>
       </div>
 
       <LevelUpEffect 
