@@ -2,275 +2,169 @@
 @tailwind components;
 @tailwind utilities;
 
-/* PIXEL ART / RETRO GAME DESIGN SYSTEM */
+/* 3D TOY / ARCADE REDESIGN — mantém tokens semânticos, muda a skin */
 
 @layer base {
   :root {
-    /* Night sky purple/blue theme */
-    --background: 260 60% 12%;
-    --foreground: 0 0% 98%;
+    /* Deep purple night — #0d0221 */
+    --background: 263 82% 7%;
+    --foreground: 0 0% 100%;
 
-    --card: 260 50% 16%;
-    --card-foreground: 0 0% 98%;
+    /* Card surface — #1a0b2e */
+    --card: 263 60% 11%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 260 55% 14%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 263 60% 11%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Pixel heart red/pink */
-    --primary: 350 85% 55%;
-    --primary-foreground: 0 0% 100%;
+    /* Hot magenta neon — #ff00e5 */
+    --primary: 308 100% 50%;
+    --primary-foreground: 263 82% 7%;
 
-    --secondary: 260 40% 22%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 263 40% 18%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 260 30% 25%;
-    --muted-foreground: 260 20% 65%;
+    --muted: 263 30% 20%;
+    --muted-foreground: 0 0% 72%;
 
-    --accent: 350 85% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 308 100% 50%;
+    --accent-foreground: 263 82% 7%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
+    /* Alert red — #ff3d3d */
+    --destructive: 0 100% 62%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 260 40% 25%;
-    --input: 260 40% 25%;
-    --ring: 350 85% 55%;
+    --border: 263 40% 22%;
+    --input: 263 40% 22%;
+    --ring: 308 100% 50%;
 
-    --radius: 0;
-    
-    /* Pixel Game Custom Variables */
-    --pixel-green: 145 70% 45%;
-    --pixel-green-dark: 145 70% 35%;
-    --pixel-gold: 45 100% 50%;
-    --pixel-purple: 280 70% 50%;
-    
-    /* Stars */
+    --radius: 1.5rem;
+
+    /* Toy skin custom tokens */
+    --pixel-green: 151 100% 50%;       /* #00ff88 */
+    --pixel-green-dark: 151 100% 30%;  /* #009e54 */
+    --pixel-gold: 45 100% 55%;         /* rich gold */
+    --pixel-purple: 268 100% 62%;
+
     --star: 0 0% 100%;
-    --star-bright: 50 100% 80%;
-    
-    /* City */
-    --city-silhouette: 260 60% 8%;
-    --window-light: 50 100% 70%;
-    
-    /* Pixel shadows */
-    --pixel-shadow: 260 60% 5%;
-    
-    /* Gradients */
-    --gradient-hero: linear-gradient(180deg, hsl(260 60% 12%), hsl(260 50% 8%));
-    --gradient-card: linear-gradient(180deg, hsl(260 50% 18%), hsl(260 50% 14%));
-    
-    /* Pixel glow effects */
-    --glow-pink: 0 0 20px hsl(350 85% 55% / 0.5);
-    --glow-green: 0 0 20px hsl(145 70% 45% / 0.5);
-    
-    /* Transitions */
-    --transition-smooth: all 0.2s ease;
+    --star-bright: 51 100% 65%;
 
-    --sidebar-background: 260 60% 12%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 350 85% 55%;
+    --sidebar-background: 263 82% 7%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 308 100% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 260 40% 22%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 260 40% 25%;
-    --sidebar-ring: 350 85% 55%;
+    --sidebar-accent: 263 40% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 263 40% 22%;
+    --sidebar-ring: 308 100% 50%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-    image-rendering: pixelated;
-  }
+  * { @apply border-border; }
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 12px;
-    line-height: 1.8;
+    font-family: 'Lexend', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-normal tracking-normal;
-    font-family: 'Press Start 2P', monospace;
-    text-shadow: 4px 4px 0 hsl(var(--pixel-shadow));
-  }
-  
-  h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-  }
-  
-  h2 {
-    font-size: clamp(1.25rem, 3vw, 2rem);
-  }
-  
-  h3 {
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-family: 'Lexend', system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
   }
 }
 
-/* Pixel Art Utilities */
 @layer utilities {
-  .pixel-border {
-    border: 4px solid;
-    border-image: linear-gradient(
-      to bottom right,
-      hsl(var(--foreground)) 0%,
-      hsl(var(--foreground)) 25%,
-      hsl(var(--muted)) 25%,
-      hsl(var(--muted)) 50%,
-      hsl(var(--border)) 50%,
-      hsl(var(--border)) 75%,
-      hsl(var(--pixel-shadow)) 75%
-    ) 1;
-  }
-  
-  .pixel-box {
-    border: 4px solid hsl(var(--foreground));
-    box-shadow: 
-      4px 4px 0 hsl(var(--pixel-shadow)),
-      inset -4px -4px 0 hsl(var(--muted));
-  }
-  
-  .pixel-glow-pink {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.5);
-  }
-  
-  .pixel-glow-green {
-    box-shadow: 0 0 20px hsl(var(--pixel-green) / 0.5);
-  }
-  
   .pixel-text-shadow {
-    text-shadow: 2px 2px 0 hsl(var(--pixel-shadow));
+    text-shadow: 0 4px 0 rgba(0,0,0,0.35);
   }
-  
-  .animate-in {
-    animation: fadeIn 0.5s ease-out forwards;
+
+  .toy-card {
+    background: linear-gradient(180deg, hsl(263 60% 14%), hsl(263 60% 9%));
+    border: 1px solid hsl(0 0% 100% / 0.08);
+    box-shadow:
+      0 20px 40px -20px hsl(0 0% 0% / 0.6),
+      inset 0 1px 0 hsl(0 0% 100% / 0.08);
   }
-  
-  .fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease-out forwards;
+
+  .toy-glass {
+    background: hsl(0 0% 100% / 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(0 0% 100% / 0.1);
   }
-  
-  .slide-in-from-bottom-4 {
-    transform: translateY(1rem);
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(1rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
+
+  .neon-pink-glow  { box-shadow: 0 0 40px hsl(var(--primary) / 0.45); }
+  .neon-green-glow { box-shadow: 0 0 40px hsl(var(--pixel-green) / 0.4); }
+  .neon-red-glow   { box-shadow: 0 0 40px hsl(var(--destructive) / 0.4); }
+
   @keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.2); }
   }
-  
-  .animate-twinkle {
-    animation: twinkle 2s ease-in-out infinite;
-  }
-  
+  .animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
+
   @keyframes window-flicker {
     0%, 90%, 100% { opacity: 1; }
     92%, 98% { opacity: 0.3; }
   }
-  
-  .animate-window-flicker {
-    animation: window-flicker 10s ease-in-out infinite;
+  .animate-window-flicker { animation: window-flicker 10s ease-in-out infinite; }
+
+  @keyframes float-soft {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
   }
-  
+  .animate-float-soft { animation: float-soft 4s ease-in-out infinite; }
+
+  @keyframes breathe-glow {
+    0%, 100% { box-shadow: 0 0 30px hsl(var(--primary) / 0.4); }
+    50%      { box-shadow: 0 0 60px hsl(var(--primary) / 0.7); }
+  }
+  .animate-breathe-glow { animation: breathe-glow 2.5s ease-in-out infinite; }
+
   @keyframes pixel-pulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50%      { transform: scale(1.04); }
   }
-  
-  .animate-pixel-pulse {
-    animation: pixel-pulse 2s ease-in-out infinite;
-  }
-  
+  .animate-pixel-pulse { animation: pixel-pulse 2.4s ease-in-out infinite; }
+
   @keyframes pixel-bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50%      { transform: translateY(-6px); }
   }
-  
-  .animate-pixel-bounce {
-    animation: pixel-bounce 1s ease-in-out infinite;
+  .animate-pixel-bounce { animation: pixel-bounce 1.2s ease-in-out infinite; }
+
+  @keyframes level-up-text {
+    0%   { opacity: 0; transform: scale(0.6) translateY(20px); }
+    20%  { opacity: 1; transform: scale(1.15) translateY(0); }
+    40%  { transform: scale(1) translateY(0); }
+    80%  { opacity: 1; transform: scale(1) translateY(0); }
+    100% { opacity: 0; transform: scale(0.85) translateY(-20px); }
   }
-  
-  @keyframes press {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(4px); }
-    100% { transform: translateY(0); }
+  .animate-level-up-text { animation: level-up-text 2s ease-out forwards; }
+
+  @keyframes flash {
+    0%   { opacity: 0.35; }
+    100% { opacity: 0; }
   }
-  
-  .animate-press {
-    animation: press 0.15s ease-out;
+  .animate-flash { animation: flash 0.4s ease-out forwards; }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
+  .animate-fade-in { animation: fade-in 0.4s ease-out; }
+
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .animate-scale-in { animation: scale-in 0.25s ease-out; }
 }
 
-/* Pixel Icon Styles */
-.pixel-icon {
-  image-rendering: pixelated;
-  font-family: 'Press Start 2P', monospace;
-}
-
-/* Level Up Animation */
-@keyframes level-up-text {
-  0% {
-    opacity: 0;
-    transform: scale(0.5) translateY(20px);
-  }
-  20% {
-    opacity: 1;
-    transform: scale(1.2) translateY(0);
-  }
-  40% {
-    transform: scale(1) translateY(0);
-  }
-  80% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.8) translateY(-20px);
-  }
-}
-
-.animate-level-up-text {
-  animation: level-up-text 2s ease-out forwards;
-}
-
-@keyframes flash {
-  0% { opacity: 0.3; }
-  100% { opacity: 0; }
-}
-
-.animate-flash {
-  animation: flash 0.3s ease-out forwards;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(var(--background));
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary));
-  border: 2px solid hsl(var(--background));
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.8);
-}
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: hsl(var(--background)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--primary) / 0.6); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }

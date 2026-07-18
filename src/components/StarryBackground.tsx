@@ -1,76 +1,82 @@
 import { useEffect, useState } from 'react';
 
-interface Star {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  opacity: number;
-  animationDelay: number;
-}
+interface Star { id: number; x: number; y: number; size: number; opacity: number; delay: number; }
 
 export const StarryBackground = () => {
   const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
-    const generateStars = () => {
-      const newStars: Star[] = [];
-      for (let i = 0; i < 100; i++) {
-        newStars.push({
-          id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
-          size: Math.random() < 0.7 ? 2 : Math.random() < 0.9 ? 3 : 4,
-          opacity: Math.random() * 0.5 + 0.3,
-          animationDelay: Math.random() * 3,
-        });
-      }
-      setStars(newStars);
-    };
-    generateStars();
+    const arr: Star[] = [];
+    for (let i = 0; i < 90; i++) {
+      arr.push({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() < 0.7 ? 1.5 : Math.random() < 0.9 ? 2.5 : 4,
+        opacity: Math.random() * 0.6 + 0.3,
+        delay: Math.random() * 4,
+      });
+    }
+    setStars(arr);
   }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {stars.map((star) => (
+      {/* Nebula blobs — luz de palco 3D */}
+      <div className="absolute -top-24 -left-24 w-[420px] h-[420px] rounded-full blur-[120px] bg-primary/15" />
+      <div className="absolute top-1/3 -right-32 w-[380px] h-[380px] rounded-full blur-[120px] bg-[hsl(var(--pixel-green))]/8" />
+      <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full blur-[140px] bg-[hsl(var(--pixel-purple))]/10" />
+
+      {/* Estrelas — partículas suaves */}
+      {stars.map((s) => (
         <div
-          key={star.id}
-          className="absolute animate-twinkle"
+          key={s.id}
+          className="absolute rounded-full animate-twinkle"
           style={{
-            left: `${star.x}%`,
-            top: `${star.y}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            backgroundColor: star.size > 3 ? 'hsl(var(--star-bright))' : 'hsl(var(--star))',
-            opacity: star.opacity,
-            animationDelay: `${star.animationDelay}s`,
-            boxShadow: star.size > 3 ? '0 0 4px hsl(var(--star-bright))' : 'none',
+            left: `${s.x}%`,
+            top: `${s.y}%`,
+            width: `${s.size}px`,
+            height: `${s.size}px`,
+            backgroundColor: s.size > 3 ? 'hsl(var(--star-bright))' : 'hsl(var(--star))',
+            opacity: s.opacity,
+            animationDelay: `${s.delay}s`,
+            boxShadow: s.size > 2 ? `0 0 ${s.size * 2}px hsl(var(--star-bright) / 0.6)` : 'none',
           }}
         />
       ))}
-      
-      {/* Pixel city skyline at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
-        <svg viewBox="0 0 1200 120" className="w-full h-full" preserveAspectRatio="none">
+
+      {/* Diorama low-poly da cidade */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none">
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[hsl(263_82%_4%)] to-transparent" />
+        <svg viewBox="0 0 1200 160" className="w-full h-full" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="cityGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stopColor="hsl(263 70% 14%)" />
+              <stop offset="1" stopColor="hsl(263 82% 5%)" />
+            </linearGradient>
+          </defs>
           <path
-            d="M0,120 L0,100 L20,100 L20,80 L40,80 L40,90 L60,90 L60,70 L80,70 L80,85 L100,85 L100,60 L120,60 L120,80 L140,80 L140,55 L160,55 L160,75 L180,75 L180,50 L200,50 L200,70 L220,70 L220,45 L240,45 L240,65 L260,65 L260,40 L280,40 L280,60 L300,60 L300,35 L320,35 L320,55 L340,55 L340,75 L360,75 L360,50 L380,50 L380,70 L400,70 L400,45 L420,45 L420,65 L440,65 L440,55 L460,55 L460,75 L480,75 L480,60 L500,60 L500,80 L520,80 L520,50 L540,50 L540,70 L560,70 L560,40 L580,40 L580,60 L600,60 L600,35 L620,35 L620,55 L640,55 L640,45 L660,45 L660,65 L680,65 L680,55 L700,55 L700,75 L720,75 L720,50 L740,50 L740,70 L760,70 L760,60 L780,60 L780,80 L800,80 L800,55 L820,55 L820,75 L840,75 L840,45 L860,45 L860,65 L880,65 L880,40 L900,40 L900,60 L920,60 L920,50 L940,50 L940,70 L960,70 L960,55 L980,55 L980,75 L1000,75 L1000,60 L1020,60 L1020,80 L1040,80 L1040,65 L1060,65 L1060,85 L1080,85 L1080,70 L1100,70 L1100,90 L1120,90 L1120,75 L1140,75 L1140,95 L1160,95 L1160,80 L1180,80 L1180,100 L1200,100 L1200,120 Z"
-            fill="hsl(var(--city-silhouette))"
+            d="M0,160 L0,110 L60,110 L80,80 L120,80 L140,60 L200,60 L220,90 L280,90 L300,50 L360,50 L380,75 L440,75 L460,40 L520,40 L540,70 L600,70 L620,55 L680,55 L700,85 L760,85 L780,45 L840,45 L860,75 L920,75 L940,60 L1000,60 L1020,90 L1080,90 L1100,70 L1160,70 L1180,100 L1200,100 L1200,160 Z"
+            fill="url(#cityGrad)"
           />
-          {/* Windows */}
-          {Array.from({ length: 50 }).map((_, i) => (
+          {Array.from({ length: 60 }).map((_, i) => (
             <rect
               key={i}
               x={20 + (i % 20) * 58}
-              y={50 + Math.floor(i / 20) * 25}
-              width="3"
-              height="4"
-              fill={Math.random() > 0.5 ? 'hsl(var(--window-light))' : 'transparent'}
+              y={70 + Math.floor(i / 20) * 22}
+              width="4"
+              height="5"
+              rx="1"
+              fill={Math.random() > 0.45 ? 'hsl(51 100% 65%)' : 'transparent'}
               className="animate-window-flicker"
-              style={{ animationDelay: `${Math.random() * 5}s` }}
+              style={{ animationDelay: `${Math.random() * 5}s`, filter: 'drop-shadow(0 0 3px hsl(51 100% 65%))' }}
             />
           ))}
         </svg>
       </div>
+
+      {/* Spotlight base */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-40 bg-gradient-to-t from-primary/15 to-transparent blur-2xl" />
     </div>
   );
 };

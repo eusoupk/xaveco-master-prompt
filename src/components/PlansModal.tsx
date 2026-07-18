@@ -117,21 +117,21 @@ export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
           aria-modal="true"
           aria-label="Escolha seu plano"
         >
-          <div className="relative w-full max-w-5xl my-auto bg-card border-2 md:border-4 border-primary shadow-[0_0_60px_hsl(var(--primary)/0.4)] animate-scale-in p-4 md:p-8">
+          <div className="relative w-full max-w-5xl my-auto toy-card rounded-[32px] border-primary/40 neon-pink-glow animate-scale-in p-5 md:p-8">
             <button
               onClick={close}
-              className="absolute top-2 right-2 md:top-4 md:right-4 text-foreground hover:text-primary transition-colors p-1"
+              className="absolute top-3 right-3 w-9 h-9 rounded-full toy-glass hover:border-primary flex items-center justify-center transition-colors"
               aria-label="Fechar"
             >
-              <X className="w-5 h-5 md:w-6 md:h-6" />
+              <X className="w-4 h-4" />
             </button>
 
-            <div className="text-center mb-4 md:mb-8 pt-4 md:pt-2">
-              <p className="text-[10px] md:text-xs text-pixel-gold mb-2">▸ ESCOLHA SEU PLANO ◂</p>
-              <h3 className="text-sm md:text-xl text-primary pixel-text-shadow mb-1 md:mb-2">
+            <div className="text-center mb-6 md:mb-8 pt-2">
+              <p className="text-[11px] text-pixel-gold font-black uppercase tracking-widest mb-2">▸ Escolha Seu Plano ◂</p>
+              <h3 className="text-2xl md:text-3xl font-black italic text-primary drop-shadow-[0_0_20px_hsl(var(--primary)/0.5)] mb-2">
                 DESBLOQUEIE O XAVECO
               </h3>
-              <p className="text-[8px] md:text-xs text-muted-foreground max-w-md mx-auto leading-relaxed">
+              <p className="text-xs md:text-sm text-white/60 max-w-md mx-auto leading-relaxed">
                 Todos os planos oferecem acesso completo. Escolha a opção ideal pra você.
               </p>
             </div>
@@ -140,47 +140,47 @@ export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
               {PLANS.map((plan) => (
                 <div
                   key={plan.id}
-                  className={`relative flex flex-col p-3 md:p-4 border-2 md:border-4 transition-all duration-200 hover:-translate-y-1 ${
+                  className={`relative flex flex-col rounded-3xl p-4 md:p-5 transition-all duration-300 ease-out hover:-translate-y-1 ${
                     plan.highlight
-                      ? 'border-pixel-green bg-pixel-green/5 shadow-[0_0_25px_hsl(var(--pixel-green)/0.35)]'
-                      : 'border-border bg-background/40 hover:border-primary'
+                      ? 'bg-gradient-to-b from-[hsl(var(--pixel-green))]/20 to-[hsl(var(--pixel-green))]/5 border border-[hsl(var(--pixel-green))]/40 neon-green-glow'
+                      : 'toy-card hover:border-primary/50'
                   }`}
                 >
                   {plan.badge && (
                     <div
-                      className={`absolute -top-2 md:-top-3 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-0.5 md:px-3 md:py-1 text-[7px] md:text-[9px] border-2 ${
+                      className={`absolute -top-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg ${
                         plan.highlight
-                          ? 'bg-pixel-green text-background border-pixel-green-dark'
-                          : 'bg-pixel-gold text-background border-pixel-gold/70'
+                          ? 'bg-gradient-to-b from-[hsl(var(--pixel-green))] to-[hsl(151_100%_38%)] text-background'
+                          : 'bg-gradient-to-b from-[hsl(var(--pixel-gold))] to-[hsl(45_100%_45%)] text-background'
                       }`}
                     >
                       {plan.badge}
                     </div>
                   )}
 
-                  <div className="text-center mb-2 md:mb-3 pt-2">
-                    <div className="text-2xl md:text-3xl mb-1">{plan.emoji}</div>
-                    <p className="text-[10px] md:text-xs text-foreground">{plan.name}</p>
+                  <div className="text-center mb-3 pt-3">
+                    <div className="text-3xl md:text-4xl mb-2">{plan.emoji}</div>
+                    <p className="text-xs md:text-sm font-black uppercase tracking-widest text-white/85">{plan.name}</p>
                   </div>
 
-                  <div className="text-center mb-2 md:mb-3">
-                    <p className={`text-sm md:text-lg pixel-text-shadow ${plan.highlight ? 'text-pixel-green' : 'text-pixel-gold'}`}>
+                  <div className="text-center mb-3">
+                    <p className={`text-2xl md:text-3xl font-black italic ${plan.highlight ? 'text-[hsl(var(--pixel-green))]' : 'text-[hsl(var(--pixel-gold))]'}`}>
                       {plan.price}
                     </p>
-                    <p className="text-[7px] md:text-[9px] text-muted-foreground">{plan.priceSuffix}</p>
+                    <p className="text-[11px] text-white/50 font-medium">{plan.priceSuffix}</p>
                   </div>
 
-                  <p className="text-[8px] md:text-[10px] text-muted-foreground text-center leading-relaxed mb-3 md:mb-4 flex-1">
+                  <p className="text-xs text-white/65 text-center leading-relaxed mb-5 flex-1">
                     {plan.description}
                   </p>
 
                   <button
                     onClick={() => handlePlanClick(plan)}
                     onMouseEnter={() => soundGenerator.playHover?.()}
-                    className={`w-full font-pixel uppercase text-[8px] md:text-[10px] py-2 md:py-3 px-2 border-2 md:border-4 border-b-4 md:border-b-8 transition-all duration-150 hover:border-b-2 md:hover:border-b-4 hover:translate-y-0.5 active:translate-y-1 ${
+                    className={`w-full font-black uppercase text-[11px] tracking-tight py-3 px-3 rounded-2xl border-b-[6px] transition-all duration-200 ease-out hover:-translate-y-[1px] active:translate-y-1 active:border-b-2 ${
                       plan.highlight
-                        ? 'bg-pixel-green text-background border-pixel-green-dark'
-                        : 'bg-primary text-primary-foreground border-primary/70'
+                        ? 'bg-gradient-to-b from-[hsl(var(--pixel-green))] to-[hsl(151_100%_38%)] text-background border-[hsl(var(--pixel-green-dark))] shadow-[0_10px_25px_-8px_hsl(var(--pixel-green)/0.5),inset_0_2px_0_rgba(255,255,255,0.4)]'
+                        : 'bg-gradient-to-b from-primary to-[hsl(280_100%_40%)] text-white border-[hsl(280_100%_28%)] shadow-[0_10px_25px_-8px_hsl(var(--primary)/0.5),inset_0_2px_0_rgba(255,255,255,0.3)]'
                     }`}
                   >
                     {plan.cta}
@@ -189,7 +189,7 @@ export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
               ))}
             </div>
 
-            <p className="text-center text-[7px] md:text-[9px] text-muted-foreground mt-4 md:mt-6">
+            <p className="text-center text-[11px] text-white/50 mt-6">
               ✓ Checkout seguro Hotmart · ✓ Pix, Cartão e Boleto · ✓ Cancele quando quiser
             </p>
           </div>

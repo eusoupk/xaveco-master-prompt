@@ -1,35 +1,13 @@
 import { forwardRef } from 'react';
 import { soundGenerator } from "@/hooks/useSound";
 
-interface TransformSectionProps {
-  onInView?: () => void;
-}
+interface TransformSectionProps { onInView?: () => void; }
 
 const phases = [
-  {
-    phase: "FASE 1",
-    icon: "📝",
-    title: "Descreva",
-    description: "Conte o contexto",
-  },
-  {
-    phase: "FASE 2",
-    icon: "⚡",
-    title: "IA Gera",
-    description: "Mensagens perfeitas",
-  },
-  {
-    phase: "FASE 3",
-    icon: "🎯",
-    title: "Escolha",
-    description: "Selecione o tom",
-  },
-  {
-    phase: "BOSS",
-    icon: "❤️",
-    title: "Conquiste",
-    description: "Use na vida real",
-  },
+  { phase: "FASE 1", icon: "📝", title: "Descreva", description: "Conte o contexto" },
+  { phase: "FASE 2", icon: "⚡", title: "IA Gera",  description: "Mensagens perfeitas" },
+  { phase: "FASE 3", icon: "🎯", title: "Escolha",  description: "Selecione o tom" },
+  { phase: "BOSS",   icon: "❤️", title: "Conquiste", description: "Use na vida real" },
 ];
 
 const powerUps = [
@@ -42,68 +20,64 @@ const powerUps = [
 ];
 
 export const TransformSection = forwardRef<HTMLElement, TransformSectionProps>((_, ref) => {
-  const handlePowerUpHover = () => {
-    soundGenerator.playPowerUp();
-  };
-
   return (
-    <section ref={ref} className="py-12 md:py-24 relative z-10 px-4">
-      <div className="container mx-auto">
+    <section ref={ref} className="py-16 md:py-24 relative z-10 px-5">
+      <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-4">
-          <span className="inline-block bg-pixel-green/20 border-2 md:border-4 border-pixel-green text-pixel-green px-4 md:px-6 py-1 md:py-2 text-[10px] md:text-xs mb-4 md:mb-8">
-            ★ NOVO JOGO ★
+          <span className="inline-flex items-center gap-2 toy-glass rounded-full px-4 py-1.5 text-[hsl(var(--pixel-green))] text-[11px] font-bold uppercase tracking-widest">
+            ★ Novo Jogo ★
           </span>
         </div>
 
-        <h2 className="text-center mb-2 md:mb-4 text-lg md:text-2xl">
-          Como Funciona o{" "}
-          <span className="text-primary">XAVECO</span>
+        <h2 className="text-center font-black italic text-3xl md:text-4xl tracking-tight mb-3">
+          Como Funciona o <span className="text-primary drop-shadow-[0_0_20px_hsl(var(--primary)/0.6)]">XAVECO</span>
         </h2>
-
-        <p className="text-center text-[10px] md:text-xs text-muted-foreground max-w-2xl mx-auto mb-8 md:mb-16">
-          O app que cria mensagens que ela{" "}
-          <span className="text-foreground">NÃO CONSEGUE ignorar</span>.
+        <p className="text-center text-white/60 text-sm md:text-base max-w-xl mx-auto mb-12 md:mb-16">
+          O app que cria mensagens que ela <span className="text-white font-bold">NÃO CONSEGUE ignorar</span>.
         </p>
 
-        {/* Game Phases */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-6 max-w-6xl mx-auto mb-8 md:mb-16">
-          {phases.map((phase, index) => (
+        {/* Fases */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 mb-14 md:mb-20">
+          {phases.map((p, i) => (
             <div
-              key={index}
-              className="bg-card border-2 md:border-4 border-border p-3 md:p-6 hover:border-primary transition-colors group cursor-pointer"
+              key={i}
               onMouseEnter={() => soundGenerator.playHover()}
+              className="relative group cursor-pointer"
             >
-              <div className="text-pixel-gold text-[8px] md:text-xs mb-2 md:mb-4 pixel-text-shadow">
-                🕹️ {phase.phase}
+              <div className="absolute inset-0 bg-black/40 rounded-3xl translate-y-1.5" />
+              <div className="relative toy-card rounded-3xl p-4 md:p-6 hover:-translate-y-1 transition-transform duration-300 ease-out overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative z-10">
+                  <div className="text-[hsl(var(--pixel-gold))] text-[10px] md:text-xs font-black uppercase tracking-widest mb-3">
+                    🕹️ {p.phase}
+                  </div>
+                  <div className="text-4xl md:text-5xl mb-3 group-hover:scale-110 transition-transform">{p.icon}</div>
+                  <h3 className="text-primary text-base md:text-lg font-black mb-1">{p.title}</h3>
+                  <p className="text-white/60 text-xs md:text-sm leading-snug">{p.description}</p>
+                </div>
               </div>
-              <div className="text-2xl md:text-4xl mb-2 md:mb-4 group-hover:animate-pixel-bounce">
-                {phase.icon}
-              </div>
-              <h3 className="text-[10px] md:text-sm mb-1 md:mb-3 text-primary">{phase.title}</h3>
-              <p className="text-[8px] md:text-xs text-muted-foreground leading-relaxed">
-                {phase.description}
-              </p>
             </div>
           ))}
         </div>
 
-        {/* Power-ups Section */}
+        {/* Power-ups */}
         <div className="max-w-4xl mx-auto">
-          <h3 className="text-center text-[10px] md:text-sm mb-4 md:mb-8 text-pixel-gold">
-            ⬆ POWER-UPS ⬆
+          <h3 className="text-center text-[hsl(var(--pixel-gold))] text-xs md:text-sm font-black uppercase tracking-widest mb-6 md:mb-8">
+            ⬆ Power-Ups ⬆
           </h3>
-          
-          <div className="grid grid-cols-3 gap-2 md:gap-4">
-            {powerUps.map((powerUp, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {powerUps.map((pu, i) => (
               <div
-                key={index}
-                className="bg-secondary/50 border-2 md:border-4 border-secondary p-2 md:p-4 flex items-center gap-2 md:gap-4 hover:border-pixel-green transition-colors cursor-pointer"
-                onMouseEnter={handlePowerUpHover}
+                key={i}
+                onMouseEnter={() => soundGenerator.playPowerUp()}
+                className="toy-card rounded-2xl p-3 md:p-4 flex items-center gap-3 hover:border-[hsl(var(--pixel-green))]/50 hover:-translate-y-0.5 transition-all duration-300 ease-out cursor-pointer"
               >
-                <span className="text-lg md:text-2xl">{powerUp.icon}</span>
+                <div className="w-11 h-11 shrink-0 rounded-xl bg-[hsl(var(--pixel-green))]/15 border border-[hsl(var(--pixel-green))]/30 flex items-center justify-center text-2xl">
+                  {pu.icon}
+                </div>
                 <div>
-                  <div className="text-pixel-green text-[10px] md:text-sm">{powerUp.stat}</div>
-                  <div className="text-[8px] md:text-xs text-muted-foreground">{powerUp.label}</div>
+                  <div className="text-[hsl(var(--pixel-green))] text-base md:text-lg font-black">{pu.stat}</div>
+                  <div className="text-white/60 text-[10px] md:text-xs font-bold uppercase tracking-wider">{pu.label}</div>
                 </div>
               </div>
             ))}
@@ -113,5 +87,4 @@ export const TransformSection = forwardRef<HTMLElement, TransformSectionProps>((
     </section>
   );
 });
-
 TransformSection.displayName = 'TransformSection';
