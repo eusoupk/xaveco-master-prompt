@@ -83,20 +83,23 @@ export const LevelUpEffect = ({ show, level, sectionName }: LevelUpEffectProps) 
 
   return (
     <div className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center">
-      {/* Level Up Text */}
+      {/* Level Up Panel — holographic 3D */}
       <div className="animate-level-up-text">
-        <div className="text-center">
-          <div className="text-pixel-gold text-xs mb-2 pixel-text-shadow animate-pulse">
-            ★ ★ ★ LEVEL UP ★ ★ ★
-          </div>
-          <div className="text-2xl md:text-4xl text-primary pixel-text-shadow font-pixel">
-            LEVEL {level}
-          </div>
-          {sectionName && (
-            <div className="text-xs text-muted-foreground mt-2 pixel-text-shadow">
-              {sectionName}
+        <div className="relative">
+          <div className="absolute inset-0 bg-primary/30 blur-3xl rounded-3xl scale-125" />
+          <div className="relative toy-glass rounded-3xl px-8 py-6 text-center border-primary/40 neon-pink-glow">
+            <div className="text-pixel-gold text-[11px] font-black tracking-widest mb-2 animate-pulse">
+              ★ ★ ★ LEVEL UP ★ ★ ★
             </div>
-          )}
+            <div className="text-3xl md:text-5xl text-primary font-black italic drop-shadow-[0_0_20px_hsl(var(--primary)/0.7)]">
+              LEVEL {level}
+            </div>
+            {sectionName && (
+              <div className="text-xs text-white/70 mt-2 uppercase tracking-widest font-bold">
+                {sectionName}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -118,7 +121,7 @@ export const LevelUpEffect = ({ show, level, sectionName }: LevelUpEffectProps) 
       ))}
 
       {/* Flash effect */}
-      <div className="absolute inset-0 bg-pixel-gold/10 animate-flash" />
+      <div className="absolute inset-0 bg-pixel-gold/10 animate-flash pointer-events-none" />
     </div>
   );
 };
