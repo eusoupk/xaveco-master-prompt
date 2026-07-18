@@ -2,9 +2,7 @@ import { forwardRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { usePlansModal } from "@/components/PlansModal";
 
-interface PainSectionProps {
-  onInView?: () => void;
-}
+interface PainSectionProps { onInView?: () => void; }
 
 const painPoints = [
   'Mandar "oi, tudo bem?" e ser IGNORADO',
@@ -20,49 +18,46 @@ const painPoints = [
 export const PainSection = forwardRef<HTMLElement, PainSectionProps>((_, ref) => {
   const { open: openPlans } = usePlansModal();
   return (
-    <section ref={ref} className="py-12 md:py-24 relative z-10 px-4">
-      <div className="container mx-auto">
-        <h2 className="text-center mb-2 md:mb-4 text-destructive text-lg md:text-2xl">
-          ✖ GAME OVER ✖
-        </h2>
-        <p className="text-center text-sm md:text-lg mb-8 md:mb-12 text-muted-foreground">
+    <section ref={ref} className="py-16 md:py-24 relative z-10 px-5">
+      <div className="container mx-auto max-w-5xl">
+        <div className="flex items-center gap-3 justify-center mb-3">
+          <div className="h-px flex-1 max-w-24 bg-gradient-to-r from-transparent to-destructive/50" />
+          <h2 className="text-destructive font-black italic uppercase tracking-widest text-xl md:text-2xl drop-shadow-[0_0_20px_hsl(var(--destructive)/0.5)]">
+            ✖ Game Over ✖
+          </h2>
+          <div className="h-px flex-1 max-w-24 bg-gradient-to-l from-transparent to-destructive/50" />
+        </div>
+        <p className="text-center text-white/60 text-sm md:text-base mb-10 md:mb-14">
           Você Está Cansado Disso?
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 max-w-5xl mx-auto mb-8 md:mb-12">
-          {painPoints.map((pain, index) => (
-            <div
-              key={index}
-              className="bg-destructive/10 border-2 md:border-4 border-destructive/50 p-3 md:p-6 pixel-text-shadow"
-            >
-              <div className="flex items-start gap-2 md:gap-3">
-                <span className="text-destructive text-sm md:text-lg">✖</span>
-                <p className="text-foreground text-[10px] md:text-xs leading-relaxed">{pain}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 mb-12">
+          {painPoints.map((pain, i) => (
+            <div key={i} className="relative group">
+              <div className="absolute inset-0 bg-black/40 rounded-3xl translate-y-1.5" />
+              <div className="relative toy-card rounded-3xl p-5 md:p-6 flex items-start gap-3 hover:-translate-y-0.5 transition-transform duration-300 ease-out overflow-hidden">
+                <div className="absolute -top-8 -right-8 w-24 h-24 bg-destructive/15 blur-3xl pointer-events-none" />
+                <div className="relative z-10 w-9 h-9 shrink-0 rounded-xl bg-destructive/15 border border-destructive/30 flex items-center justify-center">
+                  <span className="text-destructive text-lg font-black">✖</span>
+                </div>
+                <p className="relative z-10 text-white/90 text-sm md:text-[15px] leading-snug font-medium pt-1">{pain}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center space-y-4 md:space-y-6 max-w-2xl mx-auto">
-          <div className="bg-card/50 border-2 md:border-4 border-border p-4 md:p-8">
-            <p className="text-muted-foreground text-[10px] md:text-xs mb-2 md:mb-4">
-              ▸ MENSAGEM DO SISTEMA ◂
+        <div className="text-center space-y-6 max-w-2xl mx-auto">
+          <div className="toy-card rounded-3xl p-6 md:p-8">
+            <p className="text-[hsl(var(--pixel-gold))] text-[11px] tracking-widest uppercase font-bold mb-3">
+              ▸ Mensagem do Sistema ◂
             </p>
-            <p className="text-sm md:text-lg leading-relaxed">
+            <p className="text-lg md:text-2xl font-black italic leading-tight">
               <span className="text-destructive">Não existe gente feia.</span>
               <br />
-              <span className="text-destructive">
-                Existe gente que não sabe conversar.
-              </span>
+              <span className="text-destructive">Existe gente que não sabe conversar.</span>
             </p>
           </div>
-          
-          <Button
-            variant="game"
-            size="default"
-            className="text-[10px] md:text-xs h-10 md:h-12 px-4 md:px-8"
-            onClick={openPlans}
-          >
+          <Button variant="game" size="lg" onClick={openPlans}>
             ★ A Solução Que Muda Tudo
           </Button>
         </div>
@@ -70,5 +65,4 @@ export const PainSection = forwardRef<HTMLElement, PainSectionProps>((_, ref) =>
     </section>
   );
 });
-
 PainSection.displayName = 'PainSection';
