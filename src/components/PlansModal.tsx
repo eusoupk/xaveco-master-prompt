@@ -130,15 +130,61 @@ export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
             </button>
 
             <div className="text-center mb-6 md:mb-8 pt-2">
-              <p className="text-[11px] text-pixel-gold font-black uppercase tracking-widest mb-2">▸ Escolha Seu Plano ◂</p>
+              <p className="text-[11px] text-pixel-gold font-black uppercase tracking-widest mb-2">
+                {purchased ? '▸ Último Passo ◂' : '▸ Escolha Seu Plano ◂'}
+              </p>
               <h3 className="text-2xl md:text-3xl font-black italic text-primary drop-shadow-[0_0_20px_hsl(var(--primary)/0.5)] mb-2">
-                DESBLOQUEIE O XAVECO
+                {purchased ? 'ACESSO AUTOMÁTICO' : 'DESBLOQUEIE O XAVECO'}
               </h3>
               <p className="text-xs md:text-sm text-white/60 max-w-md mx-auto leading-relaxed">
-                Todos os planos oferecem acesso completo. Escolha a opção ideal pra você.
+                {purchased
+                  ? 'Assim que o pagamento for aprovado, seu acesso é liberado sozinho — sem WhatsApp, sem espera.'
+                  : 'Todos os planos oferecem acesso completo. Escolha a opção ideal pra você.'}
               </p>
             </div>
 
+            {purchased ? (
+              <div className="max-w-lg mx-auto">
+                <div className="toy-card rounded-3xl p-5 md:p-6 space-y-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-lg">1️⃣</span>
+                    <p className="text-sm text-white/80 leading-relaxed">
+                      Finalize a compra do plano <span className="font-black text-[hsl(var(--pixel-gold))]">{purchased.name}</span> na aba do checkout Hotmart que abriu.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-lg">2️⃣</span>
+                    <p className="text-sm text-white/80 leading-relaxed">
+                      Abra o app e entre com o <span className="font-black text-primary">MESMO e-mail usado na compra</span>. Você recebe um link de acesso seguro por e-mail.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <span className="text-lg">3️⃣</span>
+                    <p className="text-sm text-white/80 leading-relaxed">
+                      Pronto: seu plano já estará ativo automaticamente.
+                    </p>
+                  </div>
+
+                  <a
+                    href="https://desenrola-comigo.lovable.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => soundGenerator.playStart?.()}
+                    onMouseEnter={() => soundGenerator.playHover?.()}
+                    className="block text-center w-full font-black uppercase text-[11px] tracking-tight py-3 px-3 rounded-2xl border-b-[6px] transition-all duration-200 ease-out hover:-translate-y-[1px] active:translate-y-1 active:border-b-2 bg-gradient-to-b from-[hsl(var(--pixel-green))] to-[hsl(151_100%_38%)] text-background border-[hsl(var(--pixel-green-dark))] shadow-[0_10px_25px_-8px_hsl(var(--pixel-green)/0.5),inset_0_2px_0_rgba(255,255,255,0.4)]"
+                  >
+                    ▶ ACESSAR O APP
+                  </a>
+
+                  <button
+                    onClick={() => setPurchased(null)}
+                    className="w-full text-[11px] text-white/50 hover:text-white/80 transition-colors"
+                  >
+                    ← Voltar para os planos
+                  </button>
+                </div>
+              </div>
+            ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
               {PLANS.map((plan) => (
                 <div
@@ -191,9 +237,10 @@ export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
                 </div>
               ))}
             </div>
+            )}
 
             <p className="text-center text-[11px] text-white/50 mt-6">
-              ✓ Checkout seguro Hotmart · ✓ Pix, Cartão e Boleto · ✓ Cancele quando quiser
+              ✓ Checkout seguro Hotmart · ✓ Acesso liberado automaticamente após o pagamento · ✓ Cancele quando quiser
             </p>
           </div>
         </div>
