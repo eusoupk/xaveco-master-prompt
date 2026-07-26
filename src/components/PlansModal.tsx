@@ -68,12 +68,14 @@ const PLANS: Plan[] = [
 
 export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
   const [visible, setVisible] = useState(false);
+  const [purchased, setPurchased] = useState<Plan | null>(null);
   const dismissedRef = useRef(false);
   const AUTO_OPEN_MS = 10_000;
   const SESSION_KEY = 'xaveco_plans_modal_shown';
 
   const open = useCallback(() => {
     soundGenerator.playPopup?.();
+    setPurchased(null);
     setVisible(true);
   }, []);
 
@@ -104,6 +106,7 @@ export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
   const handlePlanClick = (plan: Plan) => {
     soundGenerator.playStart?.();
     window.open(plan.url, '_blank', 'noopener,noreferrer');
+    setPurchased(plan);
   };
 
   return (
