@@ -170,7 +170,7 @@ export default function App(){
         </div>
       </footer>
 
-      <a id="sticky-buy" className={`sticky-btn ${stickyVisible ? 'show' : ''}`} href={CTA_URL} onClick={handleCtaClick()}>Ativar Xaveco – R$ 19,90/semana</a>
+      <a id="sticky-buy" className={`sticky-btn ${stickyVisible ? 'show' : ''}`} href={CTA_URL} onClick={handleCtaClick()}>Ativar Xaveco – R$ 49,90/mês</a>
 
     </div>
   )

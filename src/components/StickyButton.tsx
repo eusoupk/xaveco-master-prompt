@@ -15,7 +15,7 @@ export const StickyButton = ({ visible }: StickyButtonProps) => {
         visible ? 'bottom-5' : '-bottom-28'
       }`}
     >
-      ▶ ATIVAR — R$ 19,90/SEM
+      ▶ ATIVAR — R$ 49,90/MÊS
     </button>
   );
 };
