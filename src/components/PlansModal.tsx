@@ -22,47 +22,16 @@ interface Plan {
 
 const PLANS: Plan[] = [
   {
-    id: 'weekly',
-    emoji: '💜',
-    name: 'SEMANAL',
-    price: 'R$ 19,90',
-    priceSuffix: '/semana',
-    description: '7 dias. Ideal para quem quer começar hoje.',
-    cta: '▶ COMEÇAR AGORA',
-    url: 'https://pay.hotmart.com/V106597454H?off=lkdbuk3f',
-  },
-  {
     id: 'monthly',
     emoji: '❤️',
     name: 'MENSAL',
     price: 'R$ 49,90',
     priceSuffix: '/mês',
-    badge: '⭐ MAIS ESCOLHIDO',
+    badge: '⭐ ÚNICO PLANO',
     description: '30 dias. Melhor equilíbrio entre custo e benefício.',
     cta: '▶ ESCOLHER MENSAL',
     url: 'https://pay.hotmart.com/V106597454H?off=agei56h5',
     highlight: true,
-  },
-  {
-    id: 'quarterly',
-    emoji: '🔥',
-    name: 'TRIMESTRAL',
-    price: 'R$ 130,00',
-    priceSuffix: '/90 dias',
-    description: '90 dias. Mais tempo para utilizar todas as funções do aplicativo.',
-    cta: '▶ QUERO 90 DIAS',
-    url: 'https://pay.hotmart.com/V106597454H?off=vgvrkbww',
-  },
-  {
-    id: 'yearly',
-    emoji: '👑',
-    name: 'ANUAL',
-    price: 'R$ 467,90',
-    priceSuffix: '/ano',
-    badge: '💎 Melhor valor por dia',
-    description: '1 Ano. Maior economia para quem deseja utilizar o Xaveco durante todo o ano.',
-    cta: '▶ QUERO O ANUAL',
-    url: 'https://pay.hotmart.com/V106597454H?off=y16ax2gw',
   },
 ];
 
