@@ -154,7 +154,7 @@ export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
                 </div>
               </div>
             ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            <div className="grid grid-cols-1 gap-3 md:gap-4 max-w-sm mx-auto">
               {PLANS.map((plan) => (
                 <div
                   key={plan.id}
