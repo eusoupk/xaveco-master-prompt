@@ -135,7 +135,7 @@ export const PlansModalProvider = ({ children }: { children: ReactNode }) => {
                   </div>
 
                   <a
-                    href="https://desenrola-comigo.lovable.app/"
+                    href="https://desenrola-comigo.lovable.app/login"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => soundGenerator.playStart?.()}

@@ -1,11 +1,10 @@
 import { soundGenerator } from '@/hooks/useSound';
-import { usePlansModal } from '@/components/PlansModal';
+import { goToCheckout } from '@/lib/links';
 
 interface StickyButtonProps { visible: boolean; }
 
 export const StickyButton = ({ visible }: StickyButtonProps) => {
-  const { open: openPlans } = usePlansModal();
-  const handleClick = () => { soundGenerator.playStart(); openPlans(); };
+  const handleClick = () => { soundGenerator.playStart(); goToCheckout(); };
   const handleHover = () => soundGenerator.playHover();
   return (
     <button

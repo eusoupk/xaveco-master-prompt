@@ -1,13 +1,13 @@
 import { forwardRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { useTimer } from "@/hooks/useTimer";
-import { usePlansModal } from "@/components/PlansModal";
+import { goToCheckout } from "@/lib/links";
 
 interface ScarcitySectionProps { onInView?: () => void; }
 
 export const ScarcitySection = forwardRef<HTMLElement, ScarcitySectionProps>((_, ref) => {
   const { timeText } = useTimer();
-  const { open: openPlans } = usePlansModal();
+
 
   return (
     <section ref={ref} className="py-16 md:py-24 relative z-10 px-5">
@@ -69,7 +69,7 @@ export const ScarcitySection = forwardRef<HTMLElement, ScarcitySectionProps>((_,
                   </span>
                 </div>
 
-                <Button variant="hero" size="xl" onClick={openPlans} className="animate-breathe-glow">
+                <Button variant="hero" size="xl" onClick={goToCheckout} className="animate-breathe-glow">
                   ▶ GOOD ENDING
                 </Button>
 

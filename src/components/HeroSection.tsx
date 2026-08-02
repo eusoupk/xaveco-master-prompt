@@ -1,12 +1,11 @@
 import { forwardRef, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { SocialProofBar } from "@/components/SocialProofBar";
-import { usePlansModal } from "@/components/PlansModal";
+import { goToCheckout } from "@/lib/links";
 
 interface HeroSectionProps { onInView?: () => void; }
 
 export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView }, ref) => {
-  const { open: openPlans } = usePlansModal();
   useEffect(() => { onInView?.(); }, []);
 
   return (
@@ -46,7 +45,7 @@ export const HeroSection = forwardRef<HTMLElement, HeroSectionProps>(({ onInView
             variant="hero"
             size="lg"
             className="w-full max-w-xs animate-breathe-glow"
-            onClick={openPlans}
+            onClick={goToCheckout}
           >
             ▶ COMEÇAR
           </Button>

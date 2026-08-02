@@ -12,6 +12,7 @@ import { SoundToggle } from "@/components/SoundToggle";
 import { LevelUpEffect } from "@/components/LevelUpEffect";
 import { usePopup } from "@/hooks/usePopup";
 import { useStickyButton } from "@/hooks/useStickyButton";
+import { APP_LOGIN_URL } from "@/lib/links";
 
 const SECTIONS = [
   { id: 'hero', name: 'INÍCIO', level: 1 },
@@ -87,6 +88,16 @@ const Index = () => {
           {currentLevel}
         </span>
       </div>
+
+      {/* Link secundário — quem já comprou */}
+      <a
+        href={APP_LOGIN_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed top-4 left-1/2 -translate-x-1/2 z-50 rounded-2xl toy-glass px-3 py-1.5 text-[10px] font-black uppercase tracking-widest text-white/70 hover:text-primary transition-colors shadow-lg whitespace-nowrap"
+      >
+        Já comprei · Entrar
+      </a>
 
       <LevelUpEffect 
         show={showLevelUp} 

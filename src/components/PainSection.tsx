@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Button } from "@/components/ui/button";
-import { usePlansModal } from "@/components/PlansModal";
+import { goToCheckout } from "@/lib/links";
 
 interface PainSectionProps { onInView?: () => void; }
 
@@ -16,7 +16,7 @@ const painPoints = [
 ];
 
 export const PainSection = forwardRef<HTMLElement, PainSectionProps>((_, ref) => {
-  const { open: openPlans } = usePlansModal();
+
   return (
     <section ref={ref} className="py-16 md:py-24 relative z-10 px-5">
       <div className="container mx-auto max-w-5xl">
@@ -57,7 +57,7 @@ export const PainSection = forwardRef<HTMLElement, PainSectionProps>((_, ref) =>
               <span className="text-destructive">Existe gente que não sabe conversar.</span>
             </p>
           </div>
-          <Button variant="game" size="lg" onClick={openPlans}>
+          <Button variant="game" size="lg" onClick={goToCheckout}>
             ★ A Solução Que Muda Tudo
           </Button>
         </div>
