@@ -4,7 +4,7 @@ const POPUP_KEY = 'xaveco_popup_closed_at'
 const TIMER_KEY = 'xaveco_timer_end'
 const POPUP_DELAY = 1500
 const TIMER_DURATION_SEC = 15 * 60
-const CTA_URL = 'https://desenrola-comigo.lovable.app/'
+const CTA_URL = 'https://pay.hotmart.com/I107116045G'
 
 function useTimer() {
   const [timeText, setTimeText] = useState('15:00')
@@ -170,7 +170,7 @@ export default function App(){
         </div>
       </footer>
 
-      <a id="sticky-buy" className={`sticky-btn ${stickyVisible ? 'show' : ''}`} href={CTA_URL} onClick={handleCtaClick()}>Ativar Xaveco – R$ 49,90/mês</a>
+      <a id="sticky-buy" className={`sticky-btn ${stickyVisible ? 'show' : ''}`} href={CTA_URL} onClick={handleCtaClick()}>Ativar Xaveco – R$ 59,90/mês</a>
 
     </div>
   )
